@@ -2,6 +2,18 @@
 
 A PowerShell utility for managing a Windows Scheduled Task that launches and controls a [wpm](https://github.com/LGUG2Z/wpm) daemon/service.
 
+## Description
+
+If you are not familiar with [wpm by LGUG2Z](https://github.com/LGUG2Z/wpm), check that out first.  It is a simple user process management for Windows.  
+
+Think of it as an incredibly minimal alternative to systemd in Windows.   Are you annoyed by having simple scripts/portable appliations being started by one of 9,000,000 possible arbitrary places in Windows?  These are perfect for WPM to handle.
+
+Windows Task Scheduler starts wpmd, wpmd starts everything else.
+
+It's magic.
+
+This tool makes it a tiny bit more magical.
+
 ## Features
 
 - Loads all configuration from a single JSON file (`wpmdctl.json`)
