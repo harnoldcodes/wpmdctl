@@ -157,9 +157,6 @@ Available Actions:
 
     stop services       - Stops all running wpm services
     stop all            - Stops all running wpm services and then the scheduled task 'wpmd'
-
-Environment Variables:
-
 "@
 }
 
@@ -711,7 +708,7 @@ if ($Action -eq 'status') {
 }
 
 # Validate action parameter
-$validActions = @('create', 'destroy', 'start', 'stop', 'state')
+$validActions = @('help', 'create', 'destroy', 'start', 'stop', 'state')
 if ($Action -and $Action -notin $validActions) {
     Write-Host "Invalid action '$Action'"
     Show-Usage
@@ -719,6 +716,9 @@ if ($Action -and $Action -notin $validActions) {
 }
 
 switch ($Action) {
+    'help' {
+        Show-Usage
+    }
     'create' {
         Invoke-CreateTask -TaskName $TaskName -TaskPath $TaskPath -Command $Command -Arguments $Arguments -WorkingDir $WorkingDir -Author $Author -UserSID $UserSID
     }
@@ -808,7 +808,8 @@ switch ($Action) {
             Write-Host "Stopping the '$TaskName' task only..."
             Invoke-StopTask -TaskName $TaskName -TaskPath $TaskPath
         }
-    }    'state' {
+    }
+    'state' {
         Show-TaskState -TaskName $TaskName -TaskPath $TaskPath
     }
 }
