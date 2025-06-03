@@ -50,31 +50,32 @@ A PowerShell utility for managing a Windows Scheduled Task that launches and con
 
 3. **Run the script:**
 
-   ```powershell
-   wpmdctl [-ConfigHome <PathToConfigDir>] [-TaskName <TaskName>] <help|create|destroy|start|stop|state> [SubCommand]
-   ```
+```
+Usage: $scriptName [-ConfigHome <PathToConfig>] [-TaskName <TaskName>] <Action> [SubCommand]
 
-   - `-ConfigHome` (optional): Path to directory containing `wpmdctl.json`. Alternatively, set the `WPMDCTL_CONFIG_HOME` environment variable.
-   - `-TaskName` (optional): Name of the task to manage. Alternatively, set the `WPMDCTL_TASK_NAME` environment variable. (Required if more than one instance is ever supported.)
+Config Parameters:
+    -ConfigHome         - Path to directory containing wpmdctl.json (Alterntively set environment variable WPMDCTL_CONFIG_HOME)
+    -TaskName           - Name of Task to Manage (Alternatively set environment varible WPMDCTL_TASK_NAME)
+                        - TaskName MUST be specified if more than one wpmd instance is defined in wpmdctl.json
+Available Actions:
+    create              - Creates the scheduled task 'wpmd'
+    destroy             - Removes the scheduled task 'wpmd'
+    state               - Shows the registration and current status of the task 'wpmd' (including the raw output of 'wpmctl state' if the task is running)
 
-   Example:
-   ```powershell
-   wpmdctl help
-   wpmdctl create
-   wpmdctl start
-   wpmdctl stop
-   wpmdctl destroy
-   wpmdctl state
-   ```
+    start               - Starts the scheduled task 'wpmd' (same as 'start task')
+    start task          - Starts the scheduled task 'wpmd'
+    start watch         - Starts the scheduled task 'wpmd' and waits for it to become ready by streaming 'wpmctl log'
 
-## Actions
+    start services-all  - Starts all non-Oneshot wpm services that are not running
+    start services-auto - Starts wpm services configured for auto-start
+    start all           - Starts the scheduled task 'wpmd' and then all non-Oneshot wpm services
 
-- `help`    : Print usage help
-- `create`  : Creates the scheduled task
-- `destroy` : Stops wpm servies, stops wpmd task, and removes the scheduled task
-- `state`   : Shows registration and current status (including `wpmctl state` output if running)
-- `start`   : Starts the scheduled task, creates task if it doesn't exist (see script for subcommands)
-- `stop`    : Stops the scheduled task (see script for subcommands)
+    stop                - Stops the scheduled task 'wpmd' (same as 'stop task')
+    stop task           - Stops the scheduled task 'wpmd'
+
+    stop services       - Stops all running wpm services
+    stop all            - Stops all running wpm services and then the scheduled task 'wpmd'
+``` 
 
 ## Requirements
 
