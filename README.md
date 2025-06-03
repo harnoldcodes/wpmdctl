@@ -51,7 +51,7 @@ A PowerShell utility for managing a Windows Scheduled Task that launches and con
 3. **Run the script:**
 
 ```
-Usage: $scriptName [-ConfigHome <PathToConfig>] [-TaskName <TaskName>] <Action> [SubCommand]
+Usage: wpmdctl [-ConfigHome <PathToConfig>] [-TaskName <TaskName>] <Action> [SubCommand]
 
 Config Parameters:
     -ConfigHome         - Path to directory containing wpmdctl.json (Alterntively set environment variable WPMDCTL_CONFIG_HOME)
