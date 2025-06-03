@@ -11,6 +11,8 @@ A PowerShell utility for managing a Windows Scheduled Task that launches and con
 
 ## Quick Start
 
+1. **Copy wpmdctl.ps1 into your $env:Path somewhere!**
+
 1. **Copy the configuration file:**
 
    Place your `wpmdctl.json` file in the configuration directory. By default, the script will look for the config file at:
@@ -49,7 +51,7 @@ A PowerShell utility for managing a Windows Scheduled Task that launches and con
 3. **Run the script:**
 
    ```powershell
-   pwsh ./wpmdctl.ps1 [-ConfigHome <PathToConfigDir>] [-TaskName <TaskName>] <create|destroy|start|stop|state> [SubCommand]
+   wpmdctl [-ConfigHome <PathToConfigDir>] [-TaskName <TaskName>] <help|create|destroy|start|stop|state> [SubCommand]
    ```
 
    - `-ConfigHome` (optional): Path to directory containing `wpmdctl.json`. Alternatively, set the `WPMDCTL_CONFIG_HOME` environment variable.
@@ -57,19 +59,21 @@ A PowerShell utility for managing a Windows Scheduled Task that launches and con
 
    Example:
    ```powershell
-   pwsh ./wpmdctl.ps1 create
-   pwsh ./wpmdctl.ps1 start
-   pwsh ./wpmdctl.ps1 stop
-   pwsh ./wpmdctl.ps1 destroy
-   pwsh ./wpmdctl.ps1 state
+   wpmdctl help
+   wpmdctl create
+   wpmdctl start
+   wpmdctl stop
+   wpmdctl destroy
+   wpmdctl state
    ```
 
 ## Actions
 
+- `help`    : Print usage help
 - `create`  : Creates the scheduled task
-- `destroy` : Removes the scheduled task
+- `destroy` : Stops wpm servies, stops wpmd task, and removes the scheduled task
 - `state`   : Shows registration and current status (including `wpmctl state` output if running)
-- `start`   : Starts the scheduled task (see script for subcommands)
+- `start`   : Starts the scheduled task, creates task if it doesn't exist (see script for subcommands)
 - `stop`    : Stops the scheduled task (see script for subcommands)
 
 ## Requirements
