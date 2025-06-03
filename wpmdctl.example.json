@@ -1,0 +1,12 @@
+{
+  "wpm_instances": [
+    {
+      "TaskName": "wpmd",
+      "TaskPath": "\\",
+      "Command": "C:\\Windows\\System32\\conhost.exe",
+      "Arguments": "--headless $env:USERPROFILE\\.cargo\\bin\\wpmd.exe $env:USERPROFILE\\.config\\wpm\\",
+      "WorkingDir": "$env:USERPROFILE\\.config\\wpm\\",
+      "StartAsAdmin": false
+    }
+  ]
+}
