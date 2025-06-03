@@ -14,6 +14,10 @@ It's magic.
 
 This tool makes it a tiny bit more magical.
 
+## Video
+
+[![Proof-of-Concept / Introduction Video](https://img.youtube.com/vi/HH1LSZFwjI8/0.jpg)](https://www.youtube.com/watch?v=HH1LSZFwjI8)
+
 ## Features
 
 - Loads all configuration from a single JSON file (`wpmdctl.json`)
