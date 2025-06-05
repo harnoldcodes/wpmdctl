@@ -5,8 +5,7 @@
       "TaskPath": "\\",
       "Command": "C:\\Windows\\System32\\conhost.exe",
       "Arguments": "--headless $env:USERPROFILE\\.cargo\\bin\\wpmd.exe $env:USERPROFILE\\.config\\wpm\\",
-      "WorkingDir": "$env:USERPROFILE\\.config\\wpm\\",
-      "StartAsAdmin": false
+      "WorkingDir": "$env:USERPROFILE\\.config\\wpm\\"
     }
   ]
 }
