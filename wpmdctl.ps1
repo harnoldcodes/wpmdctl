@@ -2,11 +2,11 @@
 param(
     [Parameter(Position = 0, Mandatory = $false)]
     [string]$Action,
-    [Parameter(Position = 1, ValueFromRemainingArguments = $true)]
+    [Parameter(ValueFromRemainingArguments = $true)]
     [string[]]$args,
-    [Parameter(Position = 2, Mandatory = $false)]
+    [Parameter(Mandatory = $false)]
     [string]$ConfigHome,
-    [Parameter(Position = 3, Mandatory = $false)]
+    [Parameter(Mandatory = $false)]
     [string]$TaskName
 )
 
@@ -740,7 +740,8 @@ switch ($Action) {
                 'task' {
                     Write-Host "Starting the '$TaskName' task only..."
                     Invoke-StartTask -TaskName $TaskName -TaskPath $TaskPath
-                }'watch' {
+                }
+                'watch' {
                     Invoke-StartTask -TaskName $TaskName -TaskPath $TaskPath
                     if ($LASTEXITCODE -eq 0) {
                         Write-Host "Running 'wpmctl log' to wait for wpmd to become ready. Press Ctrl-C to abort watching logs."
@@ -756,7 +757,8 @@ switch ($Action) {
                 'services-auto' {
                     Write-Host 'Starting auto-start wpmctl services...'
                     Start-AutoStartServices
-                }                'all' {
+                }
+                'all' {
                     Write-Host "Starting the '$TaskName' task and all non-oneshot services..."
                     Invoke-StartTask -TaskName $TaskName -TaskPath $TaskPath
                     if ($LASTEXITCODE -eq 0) {
